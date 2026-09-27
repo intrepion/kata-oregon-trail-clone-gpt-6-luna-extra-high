@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101a16" />
+    <meta name="description" content="A westward journey of hard choices, good luck, and open country." />
+    <title>Westward — A Trail Journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Westward home">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span>WESTWARD<span class="brand-period">.</span></span>
+        <span class="brand-divider"></span>
+        <span class="brand-subtitle">A TRAIL JOURNAL</span>
+      </a>
+      <div class="topbar-right">
+        <span id="header-date" class="header-date" hidden></span>
+        <button id="load-save" class="quiet-button" type="button" hidden>Continue saved trip <span aria-hidden="true">↗</span></button>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section id="setup-view" class="setup-view" aria-labelledby="setup-title">
+        <div class="setup-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> INDEPENDENCE, MISSOURI · 1848</p>
+          <h1 id="setup-title">A thousand miles<br />of <em>what comes next.</em></h1>
+          <p class="setup-intro">The valley is somewhere beyond the mountains. Between here and there: rough roads, high water, good neighbors, and the decisions that will make this trip yours.</p>
+
+          <form id="start-form">
+            <div class="field-row">
+              <label class="field">
+                <span class="field-label">YOUR NAME</span>
+                <input id="leader-name" name="leader" maxlength="24" autocomplete="given-name" placeholder="e.g. Clara Bennett" />
+              </label>
+              <label class="field">
+                <span class="field-label">TRAVELING PARTY</span>
+                <select id="party-size" name="partySize">
+                  <option value="3">3 people</option>
+                  <option value="4" selected>4 people</option>
+                  <option value="5">5 people</option>
+                  <option value="6">6 people</option>
+                </select>
+              </label>
+            </div>
+
+            <fieldset class="role-fieldset">
+              <legend class="field-label">CHOOSE YOUR TRADE <span class="legend-note">It shapes what you bring.</span></legend>
+              <div class="role-options">
+                <label class="role-card">
+                  <input type="radio" name="role" value="farmer" checked />
+                  <span class="role-card-body"><span class="role-icon" aria-hidden="true">✳</span><span class="role-name">Farmer</span><span class="role-detail">More food, sturdy basics</span></span>
+                </label>
+                <label class="role-card">
+                  <input type="radio" name="role" value="carpenter" />
+                  <span class="role-card-body"><span class="role-icon" aria-hidden="true">⌁</span><span class="role-name">Carpenter</span><span class="role-detail">Extra wagon parts</span></span>
+                </label>
+                <label class="role-card">
+                  <input type="radio" name="role" value="trader" />
+                  <span class="role-card-body"><span class="role-icon" aria-hidden="true">◇</span><span class="role-name">Trader</span><span class="role-detail">More money for the trail</span></span>
+                </label>
+              </div>
+            </fieldset>
+
+            <div class="field-row departure-row">
+              <label class="field">
+                <span class="field-label">WHEN WILL YOU SET OUT?</span>
+                <select id="departure-month" name="month">
+                  <option value="3">April · more mud, more time</option>
+                  <option value="4" selected>May · a good middle ground</option>
+                  <option value="5">June · longer days, tighter margins</option>
+                </select>
+              </label>
+            </div>
+            <button class="primary-button depart-button" type="submit">Outfit the wagon <span aria-hidden="true">→</span></button>
+            <p class="fine-print">A small, original journey game inspired by the overland trails of the 1840s.</p>
+          </form>
+        </div>
+
+        <div class="setup-art" aria-label="Illustration of a covered wagon crossing a wide prairie at sunset" role="img">
+          <div class="art-caption"><span>FIELD NOTES · 01</span><span>THE WESTERN TRAIL</span></div>
+          <svg viewBox="0 0 760 850" class="cover-art" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="cover-sky" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#657c73"/><stop offset=".56" stop-color="#d09b6b"/><stop offset="1" stop-color="#e8b57a"/></linearGradient>
+              <linearGradient id="cover-ground" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#796b4c"/><stop offset="1" stop-color="#343d2e"/></linearGradient>
+            </defs>
+            <rect width="760" height="850" fill="url(#cover-sky)"/>
+            <circle cx="533" cy="245" r="84" fill="#f2cb88" opacity=".88"/>
+            <path d="M0 422 143 265l89 84 143-174 132 175 102-92 151 145v215H0Z" fill="#59685b" opacity=".84"/>
+            <path d="m0 463 155-100 103 62 137-121 131 140 109-65 125 70v185H0Z" fill="#35483d"/>
+            <path d="M0 488c153-36 231 1 350 25 135 27 264-37 410-54v391H0Z" fill="#9a8056"/>
+            <path d="M0 604c159-83 302-15 428 11 100 20 210-36 332-30v265H0Z" fill="url(#cover-ground)"/>
+            <path d="M537 850c-99-102-138-168-176-262-20-50-31-90-30-133 52 77 87 108 126 137 64 48 109 72 189 93 54 14 85 18 114 21v144Z" fill="#c4a06b" opacity=".86"/>
+            <g fill="#28352d" stroke="#28352d" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M165 534h198l-28 64H186Z"/>
+              <path d="M192 530c3-88 17-126 68-126s75 39 80 126Z" fill="#d6c8a6" stroke="#28352d" stroke-width="8"/>
+              <path d="M190 529h164M205 478h133M226 428h87" fill="none" stroke="#a68a5f" stroke-width="8"/>
+              <path d="m357 558 68 14 18 12h-96Z"/>
+              <circle cx="213" cy="611" r="27" fill="#a88759" stroke="#28352d" stroke-width="9"/><circle cx="340" cy="611" r="27" fill="#a88759" stroke="#28352d" stroke-width="9"/>
+              <path d="M441 565c12-28 33-38 50-32 15 6 20 22 12 38l-6 26h-55Zm-4 28 2 34m41-35 5 36m-55-54 15-15m-5 2 6-19" fill="#514a36" stroke-width="8"/>
+              <path d="m496 583 31-10 20 9 20-6 15 9-9 23h-64Z" fill="#514a36" stroke-width="7"/>
+              <path d="M499 606v25m38-28 2 33m27-34 2 31" fill="none" stroke-width="8"/>
+              <path d="M90 635c31-6 43-7 62-3m329 66c38-17 72-18 111-12" fill="none" stroke="#c6ac78" stroke-width="5" opacity=".7"/>
+            </g>
+            <g fill="#f0d7a8" opacity=".7"><circle cx="83" cy="154" r="2"/><circle cx="233" cy="102" r="2"/><circle cx="655" cy="111" r="2"/><circle cx="616" cy="372" r="2"/></g>
+          </svg>
+          <div class="art-note"><span>INDEPENDENCE</span><span>2,170 MILES TO OREGON CITY</span></div>
+        </div>
+      </section>
+
+      <section id="game-view" class="game-view" hidden aria-label="Journey dashboard">
+        <div class="page-heading">
+          <div><p class="eyebrow"><span class="eyebrow-line"></span><span id="trip-kicker">YOUR JOURNEY</span></p><h1 id="journey-title">The trail is open.</h1></div>
+          <button id="save-trip" class="outline-button" type="button"><span aria-hidden="true">↥</span> Save journey</button>
+        </div>
+
+        <div class="dashboard">
+          <aside class="sidebar" aria-label="Journey details">
+            <section class="side-card route-card">
+              <div class="side-card-heading"><div><p class="side-label">THE ROUTE WEST</p><h2>Independence to Oregon</h2></div><span class="route-compass" aria-hidden="true">N<br /><i>✳</i></span></div>
+              <div id="route-track" class="route-track" aria-label="Trail stops">
+                <svg class="route-line" viewBox="0 0 240 540" preserveAspectRatio="none" aria-hidden="true"><path d="M54 0 C132 48 77 82 131 118 S70 176 114 214 S179 247 124 285 S62 337 119 368 S181 403 111 436 S81 479 145 502 S113 527 154 540" fill="none" stroke="#59685a" stroke-width="2" stroke-dasharray="3 6" vector-effect="non-scaling-stroke"/></svg>
+                <div id="route-stops"></div>
+                <div id="route-position" class="route-position"><span></span><b>YOU</b></div>
+              </div>
+              <p class="route-footnote"><span id="route-progress-label">0%</span> OF THE WAY · <span>2,170 MILES</span></p>
+            </section>
+
+            <section class="side-card party-card">
+              <div class="side-card-heading compact"><div><p class="side-label">YOUR PEOPLE</p><h2 id="party-heading">The Bennett party</h2></div><span class="party-count" id="party-count">4</span></div>
+              <div id="party-list" class="party-list"></div>
+            </section>
+
+            <section class="side-card supplies-card">
+              <div class="side-card-heading compact"><div><p class="side-label">ON THE WAGON</p><h2>Supplies</h2></div><button id="trade-open" class="mini-action" type="button" hidden>Trade <span aria-hidden="true">↗</span></button></div>
+              <div id="supply-list" class="supply-list"></div>
+              <div class="money-line"><span>Cash on hand</span><strong id="money-value">$0</strong></div>
+            </section>
+          </aside>
+
+          <div class="journey-column">
+            <div class="stats-strip" aria-label="Trip status">
+              <div class="stat"><span>TRAIL DAY</span><strong id="day-stat">01</strong></div>
+              <div class="stat"><span>MILES WEST</span><strong id="mile-stat">0 <small>mi</small></strong></div>
+              <div class="stat"><span>WAGON</span><strong id="wagon-stat">Sound</strong></div>
+              <div class="stat weather-stat"><span>SKY</span><strong id="weather-stat">Fair</strong></div>
+            </div>
+
+            <section class="landscape-card" aria-label="Current trail scene">
+              <svg viewBox="0 0 1200 460" class="landscape" role="img" aria-label="The trail winds toward distant mountains beneath an open sky">
+                <defs><linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#718c82"/><stop offset=".78" stop-color="#d7ad7b"/></linearGradient><linearGradient id="prairie" x1="0" x2="1"><stop stop-color="#a4875f"/><stop offset="1" stop-color="#6d7657"/></linearGradient></defs>
+                <rect width="1200" height="460" fill="url(#sky)"/><circle cx="936" cy="121" r="53" fill="#f1d09b" opacity=".85"/>
+                <path d="m0 250 165-106 108 69 163-149 179 166 155-126 137 105 148-82 145 120v95H0Z" fill="#617466" opacity=".85"/>
+                <path d="m0 291 176-84 144 62 158-96 176 95 119-74 171 72 115-45 141 65v113H0Z" fill="#405448"/>
+                <path d="M0 289c175-24 292 26 425 52 178 35 341-39 775-31v150H0Z" fill="url(#prairie)"/>
+                <path d="M355 460c104-102 137-153 159-213 12-31 15-61 15-89-48 51-76 70-127 95-68 33-109 53-191 66-67 11-122 7-211 5v136Z" fill="#c0a277" opacity=".88"/>
+                <path d="M28 354c104 0 185 16 271 47M800 338c91-14 206-17 356-3" stroke="#dac59c" stroke-width="3" fill="none" opacity=".55"/>
+                <g transform="translate(708 275)" fill="#26352e" stroke="#26352e" stroke-linejoin="round">
+                  <path d="M0 31h112l-13 34H14Z"/><path d="M15 30c3-44 14-63 41-63s43 20 46 63Z" fill="#d2c3a0" stroke-width="5"/><path d="M12 29h95m-80-22h66m-47-21h30" fill="none" stroke="#947a54" stroke-width="4"/>
+                  <circle cx="24" cy="72" r="12" fill="#9d8157" stroke-width="4"/><circle cx="93" cy="72" r="12" fill="#9d8157" stroke-width="4"/><path d="M113 47h32m-6-8 11 8-11 7" fill="none" stroke-width="4"/>
+                  <path d="M150 34c6-14 15-19 23-15 6 3 7 12 3 20l-3 14h-23Zm-1 18v18m20-18 2 18" fill="#504735" stroke-width="5"/><path d="m179 46 19-7 12 7 13-4 9 7-7 14h-43Z" fill="#504735" stroke-width="4"/><path d="M185 65v16m24-17 1 17m16-17 1 16" fill="none" stroke-width="4"/>
+                </g>
+                <g fill="#314238"><path d="M90 327h5v45h-5zM77 338h31v5H77zm31-4 20-11 3 5-20 12z"/><path d="M1085 313h4v38h-4zM1073 323h27v4h-27zm24-4 18-9 2 4-18 10z"/></g>
+              </svg>
+              <div class="scene-shade"></div>
+              <div class="scene-top"><span class="live-pill"><span></span> ON THE TRAIL</span><span id="scene-date">MAY 1, 1848</span></div>
+              <div class="scene-bottom"><p class="side-label">YOU ARE NEAR</p><h2 id="location-title">Independence, Missouri</h2><p id="location-note">The last streets of town give way to open country.</p></div>
+            </section>
+
+            <div class="conditions-row">
+              <div class="condition-group"><span class="condition-label">TRAVEL PACE</span><div class="segmented" role="group" aria-label="Travel pace"><button type="button" data-pace="easy">Easy</button><button type="button" data-pace="steady" class="selected">Steady</button><button type="button" data-pace="hard">Hard</button></div></div>
+              <div class="condition-group ration-group"><span class="condition-label">DAILY RATIONS</span><div class="segmented" role="group" aria-label="Daily rations"><button type="button" data-ration="meager">Meager</button><button type="button" data-ration="filling" class="selected">Filling</button></div></div>
+              <p id="condition-note" class="condition-note">A steady pace keeps the team fresh.</p>
+            </div>
+
+            <section id="event-panel" class="event-panel" hidden aria-live="polite"></section>
+
+            <section id="trade-panel" class="trade-panel" hidden aria-label="Fort trading post">
+              <div class="trade-heading"><div><p class="side-label">FORT TRADING POST</p><h2>Make room for what you need.</h2></div><button id="trade-close" class="icon-button" type="button" aria-label="Close trading post">×</button></div>
+              <div id="trade-items" class="trade-items"></div>
+            </section>
+
+            <section id="action-panel" class="action-panel" aria-label="Journey actions">
+              <div class="section-heading"><div><p class="side-label">WHAT WILL YOU DO?</p><h2>Every day counts.</h2></div><span id="next-stop-label" class="next-stop">NEXT: FORT KEARNY</span></div>
+              <div class="action-grid">
+                <button class="action-card travel-action" data-action="travel" type="button"><span class="action-symbol" aria-hidden="true">→</span><span class="action-card-copy"><strong>Travel on</strong><small id="travel-detail">5 days · around 90 miles</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+                <button class="action-card" data-action="rest" type="button"><span class="action-symbol rest-symbol" aria-hidden="true">☾</span><span class="action-card-copy"><strong>Make camp</strong><small>Rest for 3 days, tend the party</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+                <button class="action-card" data-action="hunt" type="button"><span class="action-symbol hunt-symbol" aria-hidden="true">⌁</span><span class="action-card-copy"><strong>Go hunting</strong><small>Spend a day looking for game</small></span><span class="action-arrow" aria-hidden="true">↗</span></button>
+              </div>
+            </section>
+
+            <section class="journal-card" aria-label="Journey journal">
+              <div class="journal-heading"><div><p class="side-label">FROM THE JOURNAL</p><h2>What the trail remembers</h2></div><span class="journal-mark" aria-hidden="true">✳</span></div>
+              <ol id="journal-list" class="journal-list" aria-live="polite"></ol>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="end-view" class="end-view" hidden aria-live="polite" aria-labelledby="end-title">
+        <p class="eyebrow"><span class="eyebrow-line"></span><span id="end-kicker">THE JOURNEY'S END</span></p>
+        <h1 id="end-title">The valley, at last.</h1>
+        <p id="end-message" class="end-message"></p>
+        <div id="end-stats" class="end-stats"></div>
+        <button id="new-journey" class="primary-button" type="button">Begin another journey <span aria-hidden="true">→</span></button>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <footer class="site-footer"><span>WESTWARD <span class="brand-period">✳</span></span><span>A fictional trail journal, grounded in the places of an American journey.</span></footer>
+  </body>
+</html>
