@@ -1,5 +1,9 @@
 # Westward — A Trail Journal
 
+## Play online
+
+[Play Westward](https://intrepion.github.io/kata-oregon-trail-clone-gpt-6-luna-extra-high/) — free, playable in your browser.
+
 A small, self-contained Oregon Trail inspired game set on an original telling of the 1848 overland journey from Independence, Missouri, to Oregon City.
 
 ## Play
