@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "workflowCommit": "e2f992d57ac5a0e96a8cdb6f43bcb33847eb8b08",
+  "sourceCommit": "b5b017c6620a193bfbcb2c8e514951afb2b1a01c",
+  "runId": "41396019711",
+  "url": "http://127.0.0.1:4203/",
+  "inputs": {
+    "index.html": "e980c056323604ad5c4611b66867fd04b790e5e90393128ccc096e28259bc3a1",
+    "styles.css": "53583bb4b2afe4e0f6b329c8d95b3e0ba8694c2bc7880978be1a4b24a5c82578",
+    "game.js": "5ae0ce66e7bb7db5badf032a32a39f1f863fe84075b02247fcde4d4c55289a1c"
+  },
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 1280,
+    "height": 1000
+  },
+  "externalFonts": "blocked; system fallback",
+  "screenshots": [
+    "westward-01.png",
+    "westward-02.png"
+  ]
+}
