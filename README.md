@@ -19,3 +19,7 @@ Choose a party leader, party size, trade, and departure month, then outfit the w
 - `game.js` holds the route, supplies, journey state, encounters, and local save behavior.
 
 The artwork and writing are original. Historic stop names are used as landmarks; distances and events are simplified for play.
+
+## Arcade metadata
+
+See [docs/arcade-metadata.md](docs/arcade-metadata.md) for the game-owned manifest and screenshot provenance.
